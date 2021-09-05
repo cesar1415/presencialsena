@@ -37,7 +37,7 @@
                             </tr>
                             <tr>
                                 <td><b>IMAGEN</b></td>
-                                <td><img src="uploads/products/{{$product->image }}" width="50" alt="imagen"></td>
+                                <td><img height="50px" width="50px" class="rounded-circle" src="{{asset('/storage/images/products/'.$product->image)}}"></td>
                             </tr>
                             <tr>
                         </table>

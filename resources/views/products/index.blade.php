@@ -50,7 +50,7 @@
                                         <td>{{$product->description}}</td>
                                         <td>{{$product->precio}}</td>
                                         <td>
-                                            <img src="uploads/products/{{$product->image }}" width="50" alt="imagen">
+                                            <img height="50px" width="50px" class="rounded-circle" src="{{asset('/storage/images/products/'.$product->image)}}">
                                         </td>
                                         <td>{{$product->companie->name}}</td>
                                         <td>{{$product->created_at}}</td>

@@ -19,7 +19,7 @@
               <div class="container mt-3">
                 <div class="row">
                     <div class="col-md-5">
-                        <form action="{{route('products.store')}}" method="post">
+                        <form action="{{route('products.store')}}" method="post" enctype="multipart/form-data">
                             @csrf
                             <div class="form-group">
                                 <label for="">Nombre</label>

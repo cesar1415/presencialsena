@@ -28,6 +28,7 @@ class ProductController extends Controller
 
     public function update(Request $request, $id)
     {
+
         $product = Product::find($id)->update([
             'name'=>$request->input('name'),
             'description'=>$request->input('description'),
@@ -44,22 +45,24 @@ class ProductController extends Controller
 
     public function store(Request $request)
     {
-        $filename='';
-        if ($request->hasFile('image')) {
-            $file = $request->file('image');
-            $extention = $file->getClientOriginalExtension();
-            $filename = time() . '.' . $extention;
-            $file->move('uploads/products/', $filename);
-        }
+        if($request->hasFile('image'))
+        {
+            $destination_path = 'public/images/products';
+            $image = $request->file('image');
+            $image_name = $image->getClientOriginalName();
+            $path = $request->file('image')->storeAs($destination_path,$image_name);
 
+            $input['image'] = $image_name;
+        }
         $product = Product::create([
             'name'=>$request->input('name'),
             'description'=>$request->input('description'),
             'precio'=>$request->input('precio'),
-            'image' =>$filename,
+            'image' =>$image_name,
             'companies_id'=>$request->input('companies_id'),
 
         ]);
+
         return redirect('products')->with('success', 'Producto creado correctamente');
     }
 

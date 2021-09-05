@@ -18,7 +18,7 @@ class CreateProductsTable extends Migration
             $table->string('name', 45);
             $table->string('description', 45);
             $table->double('precio');
-            $table->string('image');
+            $table->string('image')->nullable();
             $table->unsignedBigInteger('companies_id');
             $table->foreign('companies_id')->references('id')->on('companies');
             $table->timestamps();
